@@ -1,0 +1,63 @@
+env:
+  browser: false
+  node: true
+  es6: true
+extends:
+  - "eslint:recommended"
+  - "plugin:prettier/recommended"
+  - "plugin:jest/recommended"
+  - "plugin:jsdoc/recommended-error"
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parserOptions:
+  ecmaVersion: 2019
+  sourceType: module
+plugins:
+  - prettier
+  - filenames
+  - jest
+  - markdown
+  - jsdoc
+rules:
+  prettier/prettier:
+    - "error"
+  prefer-const:
+    - error
+  prefer-template:
+    - "error"
+  no-var:
+    - "error"
+  no-unused-vars:
+    - "warn"
+    - vars: "all"
+      args: "after-used"
+  filenames/match-exported:
+    - "error"
+    - ["camel", "pascal", "kebab"]
+  jest/no-disabled-tests:
+    - "warn"
+  jest/no-focused-tests:
+    - "error"
+  jest/no-identical-title:
+    - "error"
+  jest/prefer-to-have-length:
+    - "warn"
+  jest/valid-expect:
+    - "error"
+  complexity:
+    - error
+    - 10
+  jsdoc/require-jsdoc:
+    - 2
+    - contexts:
+        - ClassDeclaration
+        - ClassProperty
+        - FunctionDeclaration
+        - TSInterfaceDeclaration
+        - TSTypeAliasDeclaration
+        - TSEnumDeclaration
+        - FunctionExpression
+        - MethodDefinition
+        - ArrowFunctionExpression
+        - ClassExpression
